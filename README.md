@@ -27,3 +27,5 @@ Halaman pengenalan adalah beranda; web controller tersedia melalui tombol **Buka
 ## Vercel (opsional)
 
 `vercel.json` tetap tersedia untuk mengimpor repository ini sebagai aplikasi Vite di Vercel. Build default Vite menggunakan root path (`/`); GitHub Pages memakai base path repository melalui workflow.
+
+link web : https://riseterlan-eng.github.io/RoboShip-Controller-with-ESP32--Vite-Version
