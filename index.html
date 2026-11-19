@@ -1,30 +1,187 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>KAPAL KARAM — Remote Control Robot Kapal Apung ESP32</title>
-    <meta name="description" content="KAPAL KARAM: Aplikasi pengendali jarak jauh Bluetooth untuk Robot Kapal Apung ESP32 dengan Headless Analog 360°, Tuas Telegraf, D-Pad Maju/Mundur, dan dapat dipasang di Android & iOS." />
-    <meta property="og:title" content="KAPAL KARAM — Remote Control Robot Kapal Apung ESP32" />
-    <meta property="og:description" content="KAPAL KARAM: Remote control Bluetooth untuk Robot Kapal Apung ESP32 dengan Headless Analog 360°, Tuas Telegraf, dan dukungan instalasi Android & iOS." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#06131F" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="KAPAL KARAM" />
-    <meta name="format-detection" content="telephone=no" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
-    <link rel="shortcut icon" type="image/png" href="/pwa-192x192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10111d">
+    <meta name="description" content="Kenali KAPAL KARAM: sistem kendali robot kapal apung berbasis ESP32 dengan controller web interaktif, Bluetooth, dan PWA.">
+    <meta property="og:title" content="KAPAL KARAM — Kendali presisi, berlayar bebas">
+    <meta property="og:description" content="Jelajahi controller web robot kapal apung ESP32 dengan joystick 360°, telegraf digital, dan aksesori pintar.">
+    <meta property="og:type" content="website">
+    <title>KAPAL KARAM — Kendali presisi, berlayar bebas</title>
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="landing.css">
+    <script type="module" src="./landing.js"></script>
   </head>
-  <body class="bg-[#06131F] text-slate-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-100">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body>
+    <div class="page-noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#beranda" aria-label="KAPAL KARAM, ke beranda">
+        <span class="brand-symbol" aria-hidden="true">
+          <svg viewBox="0 0 42 42" fill="none">
+            <path d="M7 25h28l-4 8H12l-5-8Z" fill="currentColor"/>
+            <path d="M20 6v17m1-15 12 11H21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 36c4-3 7-3 11 0s7 3 11 0 7-3 10 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-wordmark">KAPAL<span>KARAM</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Buka menu">
+        <span></span><span></span>
+      </button>
+      <nav class="nav-links" id="primary-nav" aria-label="Navigasi utama">
+        <a href="#sistem">Sistem</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#alur">Cara kerja</a>
+        <a class="nav-cta" href="controller.html">Buka controller <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section-shell" id="beranda">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot"></span> ESP32 / WEB BLUETOOTH / PWA</p>
+          <h1>Kendali presisi.<br><span>Berlayar bebas.</span></h1>
+          <p class="hero-description">Satu dek kendali untuk robot kapal apung. Atur arah, kecepatan, dan perangkat kapal dari controller web yang dirancang untuk menemani setiap misi di atas air.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="controller.html">Masuk ke control deck <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="#sistem">Jelajahi sistem <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-status">
+            <span class="status-orbit" aria-hidden="true"><span></span></span>
+            <span><strong>SIAP TERHUBUNG</strong><small>Bluetooth LE · ESP32</small></span>
+            <span class="status-divider"></span>
+            <span class="status-code">KK / 01</span>
+          </div>
+        </div>
+
+        <div class="hero-scene" aria-label="Ilustrasi robot kapal KAPAL KARAM">
+          <div class="scene-orbit orbit-a"></div>
+          <div class="scene-orbit orbit-b"></div>
+          <div class="scene-crosshair crosshair-one"></div>
+          <div class="scene-crosshair crosshair-two"></div>
+          <div class="scene-coordinate coordinate-top">MISSION CONTROL <span>01 — ESP32</span></div>
+          <svg class="hero-boat" viewBox="0 0 640 440" role="img" aria-labelledby="boat-title boat-description">
+            <title id="boat-title">Robot kapal KAPAL KARAM</title>
+            <desc id="boat-description">Ilustrasi kapal robot dengan sensor, antena, dan gelombang digital berwarna jingga.</desc>
+            <defs>
+              <linearGradient id="hull" x1="144" y1="272" x2="496" y2="352" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF1D6"/><stop offset=".48" stop-color="#F8AF67"/><stop offset="1" stop-color="#E36D4D"/></linearGradient>
+              <linearGradient id="deck" x1="222" y1="203" x2="432" y2="278" gradientUnits="userSpaceOnUse"><stop stop-color="#31334A"/><stop offset="1" stop-color="#191A2B"/></linearGradient>
+              <linearGradient id="water" x1="319" y1="320" x2="319" y2="409" gradientUnits="userSpaceOnUse"><stop stop-color="#F19D57" stop-opacity=".38"/><stop offset="1" stop-color="#F19D57" stop-opacity="0"/></linearGradient>
+              <filter id="boat-shadow" x="90" y="221" width="460" height="180" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="17"/></filter>
+            </defs>
+            <ellipse cx="320" cy="350" rx="208" ry="39" fill="#F08C58" opacity=".3" filter="url(#boat-shadow)"/>
+            <path d="M82 360c57-19 87-19 144 0s86 19 143 0 87-19 144 0 86 19 144 0v55H82v-55Z" fill="url(#water)"/>
+            <path d="M116 371c39-13 59-13 98 0s59 13 98 0 59-13 98 0 59 13 98 0 59-13 98 0" stroke="#FFA46D" stroke-opacity=".62" stroke-width="2"/>
+            <path d="M162 397c29-9 44-9 73 0s44 9 73 0 44-9 73 0 44 9 73 0 44-9 73 0" stroke="#FFA46D" stroke-opacity=".3" stroke-width="2"/>
+            <path d="m144 292 352-19-49 76c-8 13-22 21-38 22l-181 10c-18 1-35-8-43-24l-41-65Z" fill="#080914" opacity=".62"/>
+            <path d="m139 267 362-20-52 82c-9 14-24 23-41 24l-183 10c-19 1-37-9-46-26l-40-70Z" fill="url(#hull)" stroke="#FFE4C5" stroke-opacity=".75" stroke-width="2"/>
+            <path d="m207 259 48-76 122-9 68 61-19 48-204 12-15-36Z" fill="url(#deck)" stroke="#F6AA6C" stroke-opacity=".8" stroke-width="2"/>
+            <path d="m258 186 5-57 69-5 30 45-29 24-75-7Z" fill="#F8E3C5" stroke="#FFEED8" stroke-width="2"/>
+            <path d="m273 137 52-3 20 32-21 17-52-5v-41Z" fill="#EE835B" opacity=".9"/>
+            <path d="M300 124V79m1 1 48 29h-48" stroke="#FFE2BC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="m244 284-72 4 22 20 68-5m150-28 60-4-20 23-50 3" fill="#24263B" stroke="#ED996B" stroke-width="2"/>
+            <path d="m170 318 278-16" stroke="#FFF1DB" stroke-opacity=".68" stroke-width="2"/>
+            <circle cx="181" cy="270" r="6" fill="#F8D477"/><circle cx="470" cy="253" r="6" fill="#F8D477"/>
+            <path d="M181 251v-17m-9 8h18m280-12v-17m-9 8h18" stroke="#F8D477" stroke-width="2" stroke-linecap="round"/>
+            <path d="m207 346 53 5m63-9 54 1m45-5 53-6" stroke="#FFE1C4" stroke-opacity=".8" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="301" cy="80" r="4" fill="#FFD47B"/><circle cx="482" cy="145" r="3" fill="#FFD47B" opacity=".7"/><circle cx="173" cy="139" r="3" fill="#FFD47B" opacity=".8"/>
+          </svg>
+          <div class="scene-coordinate coordinate-bottom">ROBOT KAPAL <span>FIELD UNIT / 01</span></div>
+          <div class="telemetry-card">
+            <span class="telemetry-icon">⌁</span>
+            <span><strong>360°</strong><small>ARAH</small></span>
+            <span class="telemetry-rule"></span>
+            <span><strong>0—100</strong><small>THROTTLE</small></span>
+          </div>
+          <div class="scene-badge"><span>LIVE</span><i></i> SIGNAL MONITOR</div>
+        </div>
+        <a class="scroll-cue" href="#sistem"><span class="scroll-line"></span> SCROLL TO EXPLORE</a>
+      </section>
+
+      <section class="system-section section-shell" id="sistem">
+        <div class="section-heading reveal">
+          <p class="section-kicker"><span>01</span> / THE SYSTEM</p>
+          <h2>Dirancang di darat.<br><span>Siap menjelajah air.</span></h2>
+        </div>
+        <div class="system-grid">
+          <p class="system-lead reveal">KAPAL KARAM menghubungkan operator dengan robot kapal apung melalui kendali yang intuitif. ESP32 menjadi pusat kendali di kapal; browser menjadi ruang kendali di tangan Anda.</p>
+          <div class="spec-grid reveal">
+            <article class="spec-card"><strong>360<span>°</span></strong><span>kendali analog</span></article>
+            <article class="spec-card"><strong>0—100<span>%</span></strong><span>kontrol throttle</span></article>
+            <article class="spec-card"><strong>BLE</strong><span>koneksi nirkabel</span></article>
+            <article class="spec-card"><strong>6<span>×</span></strong><span>kanal aksesori</span></article>
+          </div>
+        </div>
+        <div class="signal-line" aria-hidden="true"><span></span></div>
+      </section>
+
+      <section class="features-section section-shell" id="fitur">
+        <div class="features-head reveal">
+          <div>
+            <p class="section-kicker"><span>02</span> / CONTROL DECK</p>
+            <h2>Setiap perintah,<br><span>terasa dekat.</span></h2>
+          </div>
+          <p class="features-intro">Pilih instrumen untuk melihat bagaimana tiap kontrol bekerja bersama di satu layar.</p>
+        </div>
+        <div class="feature-console reveal">
+          <div class="feature-tabs" role="tablist" aria-label="Instrumen controller">
+            <button class="feature-tab is-active" id="tab-joystick" type="button" role="tab" aria-selected="true" aria-controls="feature-panel" data-feature="joystick"><span>01</span> Joystick</button>
+            <button class="feature-tab" id="tab-throttle" type="button" role="tab" aria-selected="false" aria-controls="feature-panel" data-feature="throttle" tabindex="-1"><span>02</span> Telegraf</button>
+            <button class="feature-tab" id="tab-accessory" type="button" role="tab" aria-selected="false" aria-controls="feature-panel" data-feature="accessory" tabindex="-1"><span>03</span> Aksesori</button>
+            <div class="tab-progress"><span></span></div>
+          </div>
+          <article class="feature-panel" id="feature-panel" role="tabpanel" aria-labelledby="tab-joystick" aria-live="polite">
+            <div class="feature-copy">
+              <p class="feature-index">01 — DIRECTION CONTROL</p>
+              <h3>Haluskan setiap<br>perubahan arah.</h3>
+              <p class="feature-description">Joystick analog 360° menerjemahkan arah dan intensitas gerak menjadi perintah yang responsif. Lepaskan kontrol untuk kembali ke posisi netral.</p>
+              <a class="text-link" href="controller.html">Coba control deck <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="feature-visual" aria-hidden="true">
+              <div class="instrument-ring ring-outer"></div><div class="instrument-ring ring-middle"></div><div class="instrument-ring ring-inner"></div>
+              <div class="instrument-ticks"></div><div class="joystick-stem"></div><div class="joystick-knob"><span></span></div>
+              <span class="axis-label axis-n">N</span><span class="axis-label axis-e">E</span><span class="axis-label axis-s">S</span><span class="axis-label axis-w">W</span>
+              <span class="instrument-readout">HDG <strong>042°</strong></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="workflow-section section-shell" id="alur">
+        <div class="workflow-top reveal">
+          <p class="section-kicker"><span>03</span> / MISSION FLOW</p>
+          <h2>Dari pairing ke <span>pelayaran.</span></h2>
+        </div>
+        <div class="workflow-steps">
+          <article class="workflow-step reveal"><span class="step-number">01</span><div class="step-icon" aria-hidden="true">⌁</div><h3>Hubungkan</h3><p>Pilih perangkat BLE atau bridge serial melalui pemindai perangkat di browser.</p><span class="step-tag">PAIR / CONNECT</span></article>
+          <article class="workflow-step reveal"><span class="step-number">02</span><div class="step-icon" aria-hidden="true">⌖</div><h3>Kendalikan</h3><p>Atur arah, throttle, dan aksesori lewat instrumen yang responsif untuk sentuhan.</p><span class="step-tag">STEER / THROTTLE</span></article>
+          <article class="workflow-step reveal"><span class="step-number">03</span><div class="step-icon" aria-hidden="true">⌁</div><h3>Pantau</h3><p>Lihat status koneksi dan rangkaian perintah selama sesi kendali berlangsung.</p><span class="step-tag">MONITOR / EXPLORE</span></article>
+        </div>
+        <div class="workflow-note reveal"><span class="note-mark">!</span><p>Web Bluetooth memerlukan browser yang kompatibel dan koneksi HTTPS. iOS Safari belum mendukung Web Bluetooth bawaan; ketersediaan fitur juga bergantung pada perangkat serta firmware ESP32.</p></div>
+      </section>
+
+      <section class="launch-section section-shell">
+        <div class="launch-card reveal">
+          <div class="launch-orbit" aria-hidden="true"></div>
+          <div class="launch-copy">
+            <p class="section-kicker"><span>04</span> / YOUR NEXT MISSION</p>
+            <h2>Ambil kendali.<br><span>Mulai dari sini.</span></h2>
+            <p>Buka controller di browser desktop atau Android, sambungkan perangkat, lalu jelajahi control deck KAPAL KARAM.</p>
+            <div class="launch-actions">
+              <a class="button button-primary" href="controller.html">Buka controller <span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="https://github.com/riseterlan-eng/RoboShip-Controller-with-ESP32--Vite-Version" target="_blank" rel="noopener noreferrer">Lihat repository <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="launch-mark" aria-hidden="true"><span>K</span><i></i><b></b></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <a class="brand footer-brand" href="#beranda"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none"><path d="M7 25h28l-4 8H12l-5-8Z" fill="currentColor"/><path d="M20 6v17m1-15 12 11H21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 36c4-3 7-3 11 0s7 3 11 0 7-3 10 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="brand-wordmark">KAPAL<span>KARAM</span></span></a>
+      <p>ROBOT KAPAL APUNG · ESP32 · WEB CONTROL</p>
+      <a href="#beranda">Kembali ke atas ↑</a>
+    </footer>
   </body>
 </html>

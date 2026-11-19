@@ -4,8 +4,11 @@ import path from 'path';
 import {defineConfig} from 'vite';
 import {VitePWA} from 'vite-plugin-pwa';
 
+const base = process.env.VITE_BASE_PATH || '/';
+
 export default defineConfig(() => {
   return {
+    base,
     plugins: [
       react(),
       tailwindcss(),
@@ -19,7 +22,7 @@ export default defineConfig(() => {
           'assets/aistudio/image_0af4d8d3.png',
         ],
         manifest: {
-          id: '/',
+          id: `${base}controller.html`,
           name: 'KAPAL KARAM — Robot Kapal Apung ESP32',
           short_name: 'KAPAL KARAM',
           description:
@@ -30,25 +33,25 @@ export default defineConfig(() => {
           display: 'standalone',
           display_override: ['standalone', 'fullscreen'],
           orientation: 'any',
-          start_url: '/',
-          scope: '/',
+          start_url: `${base}controller.html`,
+          scope: base,
           prefer_related_applications: false,
           categories: ['utilities', 'navigation'],
           icons: [
             {
-              src: '/pwa-192x192.png',
+              src: `${base}pwa-192x192.png`,
               sizes: '192x192',
               type: 'image/png',
               purpose: 'any',
             },
             {
-              src: '/pwa-512x512.png',
+              src: `${base}pwa-512x512.png`,
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any',
             },
             {
-              src: '/pwa-maskable-512x512.png',
+              src: `${base}pwa-maskable-512x512.png`,
               sizes: '512x512',
               type: 'image/png',
               purpose: 'maskable',
@@ -57,7 +60,7 @@ export default defineConfig(() => {
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
-          navigateFallback: '/index.html',
+          navigateFallback: `${base}controller.html`,
           cleanupOutdatedCaches: true,
           clientsClaim: true,
           skipWaiting: true,
@@ -101,6 +104,14 @@ export default defineConfig(() => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
+      },
+    },
+    build: {
+      rollupOptions: {
+        input: {
+          landing: path.resolve(__dirname, 'index.html'),
+          controller: path.resolve(__dirname, 'controller.html'),
+        },
       },
     },
     server: {

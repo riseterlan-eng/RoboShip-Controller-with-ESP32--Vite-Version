@@ -4,6 +4,9 @@ import { RAW_PROJECT_FILES } from './projectFilesGlob';
 const SELF_GLOB_FILE_CONTENT = `export const RAW_PROJECT_FILES: Record<string, string> = import.meta.glob(
   [
     '/index.html',
+    '/controller.html',
+    '/landing.css',
+    '/landing.js',
     '/package.json',
     '/tsconfig.json',
     '/vite.config.ts',
@@ -51,7 +54,7 @@ export async function generateProjectZipBlob(): Promise<Blob> {
   await Promise.all(
     PUBLIC_BINARY_ICONS.map(async (filename) => {
       try {
-        const res = await fetch(`/${filename}`);
+        const res = await fetch(`${import.meta.env.BASE_URL}${filename}`);
         if (res.ok) {
           const buf = await res.arrayBuffer();
           zip.file(`public/${filename}`, buf);

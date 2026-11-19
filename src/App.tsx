@@ -648,7 +648,7 @@ export default function App() {
               className="flex items-center gap-2 font-display text-base font-bold tracking-tight text-slate-100 whitespace-nowrap shrink-0 md:text-lg"
             >
               <img
-                src="/assets/aistudio/image_0af4d8d3.png"
+                src={`${import.meta.env.BASE_URL}assets/aistudio/image_0af4d8d3.png`}
                 alt=""
                 aria-hidden="true"
                 className="h-7 w-7 rounded-md bg-white object-contain p-0.5 shrink-0"

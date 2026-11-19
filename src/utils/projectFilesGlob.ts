@@ -1,6 +1,9 @@
 export const RAW_PROJECT_FILES: Record<string, string> = import.meta.glob(
   [
     '/index.html',
+    '/controller.html',
+    '/landing.css',
+    '/landing.js',
     '/package.json',
     '/tsconfig.json',
     '/vite.config.ts',
