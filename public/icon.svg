@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="oceanGlow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#0C2D48" />
+      <stop offset="100%" stop-color="#06131F" />
+    </radialGradient>
+    <linearGradient id="hullGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#oceanGlow)" />
+  <circle cx="256" cy="256" r="196" fill="none" stroke="#164E63" stroke-width="4" stroke-dasharray="10 10" />
+  <circle cx="256" cy="256" r="144" fill="none" stroke="#0E7490" stroke-width="2" opacity="0.55" />
+  <!-- Boat Hull Top-Down -->
+  <path d="M256 84 C324 156 336 276 320 388 L192 388 C176 276 188 156 256 84 Z" fill="#0B1E2E" stroke="url(#hullGrad)" stroke-width="14" stroke-linejoin="round" />
+  <!-- Deck Cabin -->
+  <rect x="218" y="210" width="76" height="106" rx="16" fill="#06131F" stroke="#38BDF8" stroke-width="6" />
+  <!-- Bow Beacon Chevron -->
+  <polygon points="256,120 278,162 234,162" fill="#22D3EE" />
+  <!-- Brass Rudder Blade -->
+  <line x1="256" y1="392" x2="256" y2="438" stroke="#F59E0B" stroke-width="16" stroke-linecap="round" />
+  <!-- Radio Waves -->
+  <path d="M168 154 A120 120 0 0 1 344 154" fill="none" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" opacity="0.9" />
+  <path d="M134 122 A168 168 0 0 1 378 122" fill="none" stroke="#F59E0B" stroke-width="6" stroke-linecap="round" opacity="0.5" />
+</svg>
